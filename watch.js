@@ -1,4 +1,4 @@
-const API_URL = 'https://extapi.8-800-suicide.cf'
+const API_URL = 'https://anime.bytie.moe'
 
 function showError(root, error) {
     root.textContent = error
