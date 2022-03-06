@@ -8,12 +8,14 @@ function onFormLoaded(form, watchUrl) {
     form.prepend(button);
 }
 
-let initialized = false;
+let initialized = null;
 
-window.addEventListener('load', function () {
+window.addEventListener('turbolinks:load', function () {
     const start = () => {
-        if (initialized) {
-            return false;
+        const currentLocation = window.location.href
+
+        if (initialized === currentLocation) {
+            return true;
         }
 
         const watchMetaTag = document.querySelector('meta[name="shikimori-ext-url"]');
@@ -30,7 +32,7 @@ window.addEventListener('load', function () {
         try {
             const data = JSON.parse(form.getAttribute('data-entry'));
             if (data?.id != null) {
-                initialized = true;
+                initialized = currentLocation;
                 onFormLoaded(form, `${watchUrl}?id=${data?.id}`);
                 return true;
             }
