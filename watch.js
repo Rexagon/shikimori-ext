@@ -57,7 +57,6 @@ function onInit(root) {
     fetch(`${API_URL}/ext/search_by_id?shikimori_id=${titleId}`)
         .then((response) => response.json())
         .then((response) => {
-            console.log(response)
             onLoad(root, response)
         })
         .catch((e) => {
@@ -70,7 +69,7 @@ let initialized = false
 window.addEventListener('load', function () {
     const start = () => {
         if (initialized) {
-            return
+            return false;
         }
 
         const root = document.getElementById('root')
@@ -88,11 +87,10 @@ window.addEventListener('load', function () {
     }
 
     const observer = new MutationObserver(function (mutations, me) {
-        start() && me.disconnect()
+        start() && me.disconnect();
     });
 
     observer.observe(document, {
-        childList: true,
-        subtree: true
+        childList: true, subtree: true
     });
 })
