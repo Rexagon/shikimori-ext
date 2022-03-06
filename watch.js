@@ -34,11 +34,11 @@ function onLoad(root, response) {
         }
 
         const iframe = document.createElement('iframe');
-        iframe.src = response.result[0].link;
+        iframe.src = `https:${response.result[0].link}`;
         inner.appendChild(iframe);
 
         select.addEventListener('change', (event) => {
-            iframe.src = response.result[event.target.value]?.link
+            iframe.src = `https:${response.result[event.target.value]?.link}`
         })
     } else {
         const message = document.createElement('label');
