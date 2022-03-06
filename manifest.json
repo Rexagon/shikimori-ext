@@ -1,0 +1,30 @@
+{
+  "name": "shikimori-ext",
+  "description": "Video player for shikimori",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.shikimori.one/*"
+      ],
+      "css": [
+        "inpage.css"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inpage.js",
+        "watch.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
