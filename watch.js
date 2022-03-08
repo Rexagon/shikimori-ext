@@ -35,6 +35,10 @@ function onLoad(root, response) {
 
         const iframe = document.createElement('iframe');
         iframe.src = `https:${response.result[0].link}`;
+        iframe.frameBorder = 0;
+        iframe.setAttribute('allowFullScreen', 'true');
+        iframe.setAttribute('webkitallowfullscreen', 'true');
+        iframe.setAttribute('mozallowfullscreen', 'true');
         inner.appendChild(iframe);
 
         select.addEventListener('change', (event) => {
