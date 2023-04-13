@@ -33,8 +33,10 @@ function onLoad(root, response) {
             select.appendChild(option);
         }
 
+        const makeSrc = (link) => `https:${link}?episode=1`;
+
         const iframe = document.createElement('iframe');
-        iframe.src = `https:${response.result[0].link}`;
+        iframe.src = makeSrc(response.result[0].link);
         iframe.frameBorder = 0;
         iframe.setAttribute('allowFullScreen', 'true');
         iframe.setAttribute('webkitallowfullscreen', 'true');
@@ -42,7 +44,7 @@ function onLoad(root, response) {
         inner.appendChild(iframe);
 
         select.addEventListener('change', (event) => {
-            iframe.src = `https:${response.result[event.target.value]?.link}`
+            iframe.src = makeSrc(response.result[event.target.value]?.link);
         })
     } else {
         const message = document.createElement('label');
